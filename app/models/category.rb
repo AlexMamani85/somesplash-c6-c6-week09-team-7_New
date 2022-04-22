@@ -5,5 +5,5 @@ class Category < ApplicationRecord
                           length: { in: 20..240 }
   validates :cover, presence: true
 
-  has_many :comments, :as => :commentable
+  has_many :comments, as: :commentable, dependent: :nullify
 end
