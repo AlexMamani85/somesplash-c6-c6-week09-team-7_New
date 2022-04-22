@@ -4,4 +4,6 @@ class Category < ApplicationRecord
   validates :description, presence: true,
                           length: { in: 20..240 }
   validates :cover, presence: true
+
+  has_many :comments, :as => :commentable
 end

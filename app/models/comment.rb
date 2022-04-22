@@ -3,4 +3,5 @@ class Comment < ApplicationRecord
                    length: { in: 2..350 }
 
   belongs_to :photo, counter_cache: true
+  belongs_to :commentable, :polymorphic => true
 end
