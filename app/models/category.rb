@@ -6,4 +6,5 @@ class Category < ApplicationRecord
   validates :cover, presence: true
 
   has_many :comments, as: :commentable, dependent: :nullify
+  has_many :photos, dependent: :nullify
 end
