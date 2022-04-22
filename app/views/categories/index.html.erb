@@ -2,7 +2,8 @@
 
 <% @categories.each do |categories| %>
   <div>
-    <span><%= categories.name %></span>
-    <span><%= categories.photos_count %></span>
+    <h2><%= categories.name %></h2>
+    <p><%= "#{categories.photos_count} photos" %></p>
+    <p><%= categories.description %></p>
   </div>
 <% end %>
