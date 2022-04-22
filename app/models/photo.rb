@@ -4,5 +4,5 @@ class Photo < ApplicationRecord
                           length: { in: 20..240 }
   validates :image, presence: true
 
-  belongs_to :category
+  belongs_to :category, counter_cache: true
 end
