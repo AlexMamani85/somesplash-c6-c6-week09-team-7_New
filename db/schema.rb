@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_22_034031) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_22_170534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,18 +20,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_22_034031) do
     t.integer "photos_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "photos", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.bigint "category_id", null: false
+    t.bigint "category_id"
     t.string "comments_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
