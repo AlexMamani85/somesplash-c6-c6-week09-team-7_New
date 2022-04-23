@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :categories do
-    resources :comments, only: %i[create destroy update]
+    resources :comments, only: %i[create update destroy]
   end
   resources :photos do
-    resources :comments, only: %i[create destroy update]
+    resources :comments, only: %i[create update destroy]
   end
 end
