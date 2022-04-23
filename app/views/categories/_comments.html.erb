@@ -1,0 +1,28 @@
+<%= form_with url: category_comments_path(@category), model: comment do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, placeholder: "Some respectul commet here." %>
+    <% comment.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+  
+<% end %>
+
+<h3>Comments</h3>
+
+<% @comment.each do |comment| %>
+    <div>
+        <hr>
+        <span><%= comment.body%></span>
+        <span><%= comment.created_at%></span>
+        <%= link_to "Destroy", category_comment_path(@category, comment), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+    </div>
+<%end%>

@@ -3,18 +3,20 @@ class CommentsController < ApplicationController
     # POST /photos/:photo_id/comments
     def create
         if params[:category_id]
-            category = Category.find(params[:category_id])
-            comment = category.comments.new(comment_params)
+            @category = Category.find(params[:category_id])
+            comment = @category.comments.new(comment_params)
         elsif params[:photo_id]
-            photo = Photo.find(params[:photo_id])
-            comment = photo.comments.new(comment_params)
+            @photo = Photo.find(params[:photo_id])
+            comment = @photo.comments.new(comment_params)
         end
 
-        if comment.save
-            p "No saved!!"
-            render json: comment, status: :created
+        if comment.save   
+          if params[:category_id]
+            redirect_to category_path(@category)
+          elsif params[:photo_id]
+            redirect_to photo_path(@photo)
+          end   
         else
-            p "Saved!!"
             render json: { error: critic.error.full_messages }, status: :unprocessable_entity
         end
     end
