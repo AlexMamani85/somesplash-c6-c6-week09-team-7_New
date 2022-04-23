@@ -10,12 +10,12 @@ class CategoriesController < ApplicationController
     @photos = @category.photos
   end
 
-  # GET /categories
+  # GET /categories/new
   def new
     @category = Category.new
   end
 
-  # POST /category
+  # POST /categories
   def create
     @category = Category.new(category_params)
     
@@ -23,6 +23,22 @@ class CategoriesController < ApplicationController
       redirect_to category_path(@category)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  # GET /categories/id/edit
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  # PATCH/PUT /departments/:id
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.update(category_params)
+      redirect_to categories_path
+    else
+      render "Edit", status: :unprocessable_entity
     end
   end
 

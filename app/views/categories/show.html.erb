@@ -11,7 +11,7 @@
 
                 <span><%= photo.description %></span>
                 <br>
-                <span><%= "#{photo.comments_count} 0 Comments" %></span>
+                <span><%= "#{photo.comments_count} Comments" %></span>
                 <br>
                 <button><%= link_to "Edit", edit_photo_path(photo) %></button>
                 <button><%= link_to "Destroy", photo_path(photo), data: {
