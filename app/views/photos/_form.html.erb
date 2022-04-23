@@ -1,0 +1,41 @@
+<%= form_with model: photo  do |form| %>
+    <div>
+        <%= form.label :title%>
+        <br>
+        <%= form.text_field :title, placeholder: "Big montain" %>
+        <% photo.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :description %>
+        <br>
+        <%= form.text_area :description, placeholder: "Photo taken on..." %>
+        <% photo.errors.full_messages_for(:description).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :image %>
+        <br>
+        <%= form.file_field :image, accept: "image/png, image/jpeg"%>
+    </div>
+
+    <div>
+        <%= form.label :category_id %>
+        <%= form.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id }%>
+        <% photo.errors.full_messages_for(:category_id). each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    <div>
+
+  <button> <%= link_to 'Back', url_for(:back) %> </button>
+
+
+<% end %>

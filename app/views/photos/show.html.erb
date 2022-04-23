@@ -1,0 +1,14 @@
+<section class>
+    <div>
+        <h1> <%= @photo.title %> </h1>
+        <span> <%= @photo.description %> </span>
+        <span> <%= @photo.updated_at %> </span>
+        <% if @photo.image.attached? %>
+            <div>
+                <%= image_tag @photo.image%>
+            </div>
+        <% end %>
+    </div>
+
+    <%= render "comments", comment: @comment_new %>
+</section>

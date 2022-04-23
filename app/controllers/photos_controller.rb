@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
     # GET /photos/:id
     def show
-      @photos = Photo.find(params[:id])
+      @photo = Photo.find(params[:id])
+      @comments = @photo.comments
+      @comment_new = Comment.new
     end
   
     # GET /photos/new
@@ -13,6 +15,7 @@ class PhotosController < ApplicationController
     # POST /photos
     def create
       @photo = Photo.new(photo_params)
+      @category = @photo.category
       
       if @photo.save
         redirect_to category_path(@photo.category)
@@ -30,7 +33,8 @@ class PhotosController < ApplicationController
     # PATCH/PUT /departments/:id
     def update
       @photo = Photo.find(params[:id])
-  
+      @category = @photo.category
+
       if @photo.update(photo_params)
         redirect_to category_path(@photo.category)
       else
@@ -40,10 +44,11 @@ class PhotosController < ApplicationController
   
     # DELETE /categories/:id
     def destroy
-      @photo = Category.find(params[:id])
+      @photo = Photo.find(params[:id])
+      @category =  @photo.category
       @photo.destroy
       
-      redirect_to categories_path, status: :see_other
+      redirect_to category_path(@category), status: :see_other
     end
   
     private
