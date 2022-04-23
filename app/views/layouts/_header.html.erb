@@ -1,0 +1,12 @@
+<header class="header">
+  <div>
+    <%= image_tag("logo.png") %>
+  </div>
+  <div>
+    <button class="navbarbutton"><%= link_to "SEARCH", photos_path %></button>
+    <%= form_with url: "/search", method: :get do |form| %>
+      <%# <% form.label :query %>
+      <%# <% form.text_field :query, placeholder: "search" %>
+    <% end %>
+  </div>
+</header>

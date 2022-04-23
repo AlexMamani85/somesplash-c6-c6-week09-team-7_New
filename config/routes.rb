@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :photos do
     resources :comments, only: %i[create update destroy]
   end
+
+  get "/search", to: "photos#search"
 end
