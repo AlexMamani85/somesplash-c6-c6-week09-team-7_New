@@ -4,12 +4,18 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  # GET /categories
+  # GET /categories/:id
+  def show
+    @category = Category.find(params[:id])
+    @photos = @category.photos
+  end
 
+  # GET /categories
   def new
     @category = Category.new
   end
 
+  # POST /category
   def create
     @category = Category.new(category_params)
     

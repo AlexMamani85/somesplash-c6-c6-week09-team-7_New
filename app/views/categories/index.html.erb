@@ -7,6 +7,7 @@
     <h2><%= category.name %></h2>
     <p><%= "#{category.photos_count} photos" %></p>
     <p><%= category.description %></p>
+    <%= link_to "Show", category_path(category) %>
     <%= link_to "destroy", category_path(category), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
