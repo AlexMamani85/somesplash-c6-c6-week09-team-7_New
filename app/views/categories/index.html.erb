@@ -4,6 +4,11 @@
 
 <% @categories.each do |category| %>
   <div>
+    <% if category.cover.attached? %>
+      <div>
+        <%= image_tag category.cover%>
+      </div>
+    <%end%>
     <h2><%= category.name %></h2>
     <p><%= "#{category.photos_count} photos" %></p>
     <p><%= category.description %></p>

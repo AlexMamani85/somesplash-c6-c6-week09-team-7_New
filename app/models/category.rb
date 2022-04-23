@@ -7,4 +7,5 @@ class Category < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :nullify
   has_many :photos, dependent: :nullify
+  has_one_attached :cover
 end

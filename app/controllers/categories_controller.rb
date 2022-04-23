@@ -53,6 +53,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description ) #:cover # cover after implement ActiveAttachment
+    params.require(:category).permit(:name, :description, :cover) 
   end
 end
