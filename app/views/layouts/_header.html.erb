@@ -1,9 +1,9 @@
 <header class="header">
   <div>
-    <%= image_tag("logo.png") %>
+    <%= link_to image_tag("logo.png"), categories_path %>
   </div>
   <div>
-    <button class="navbarbutton"><%= link_to "SEARCH", photos_path %></button>
+    <button class="button"><%= link_to "SEARCH", photos_path, class: "navbarbutton" %></button>
     <%= form_with url: "/search", method: :get do |form| %>
       <%# <% form.label :query %>
       <%# <% form.text_field :query, placeholder: "search" %>
