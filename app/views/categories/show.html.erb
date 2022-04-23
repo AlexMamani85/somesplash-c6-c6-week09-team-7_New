@@ -1,0 +1,24 @@
+<section class>
+    <div class>
+        <h1><%= @category.name %></h1>
+        <p><%= @category.description %></p>
+
+        <!-- Change new_employee_path after creating employee routes -->
+        <button><%= link_to "New Photo", new_photo_path(category_id: @category.id) %></button>
+        <% @photos.each do |photo| %>
+            <div>
+                <h3><%= photo.title %></h3>
+
+                <span><%= photo.description %></span>
+                <br>
+                <span><%= "#{photo.comments_count} Comments" %></span>
+                <br>
+                <button><%= link_to "Edit", edit_photo_path(photo) %></button>
+                <button><%= link_to "Destroy", photo_path(photo), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                } %></button>
+            </div>
+        <% end %>
+    </div>
+</section>

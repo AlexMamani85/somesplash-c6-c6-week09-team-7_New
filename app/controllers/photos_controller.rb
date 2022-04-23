@@ -1,2 +1,3 @@
-class PhotoController < ApplicationController
+class PhotosController < ApplicationController
+  def index; end
 end

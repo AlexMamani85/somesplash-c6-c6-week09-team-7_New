@@ -5,5 +5,5 @@ class Photo < ApplicationRecord
   # validates :image, presence: true
 
   belongs_to :category, optional: true, counter_cache: true
-  has_many :comments, as: :commentable, dependent: :nullify
+  has_many :comments, as: :commentable, dependent: :destroy
 end
