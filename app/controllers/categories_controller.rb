@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @photos = @category.photos
+    @comment = @category.comments
+    @comment_new = Comment.new
   end
 
   # GET /categories/new
