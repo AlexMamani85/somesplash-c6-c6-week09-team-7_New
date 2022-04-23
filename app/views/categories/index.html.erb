@@ -1,5 +1,7 @@
 <h1>Categories</h1>
 
+<button><%= link_to "New category", new_category_path%></button>
+
 <% @categories.each do |category| %>
   <div>
     <h2><%= category.name %></h2>

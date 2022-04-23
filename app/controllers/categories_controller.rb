@@ -1,13 +1,19 @@
 class CategoriesController < ApplicationController
-  # GET /cagegories
+  # GET /categories
   def index
     @categories = Category.all
   end
 
+  # GET /categories
+
+  def new
+    @category = Category.new
+  end
+
   # DELETE /categories/:id
   def destroy
-    @categories = Category.find(params[:id])
-    @categories.destroy
+    @category = Category.find(params[:id])
+    @category.destroy
     
     redirect_to categories_path, status: :see_other
   end
