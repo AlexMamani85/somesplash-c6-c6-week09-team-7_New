@@ -1,22 +1,27 @@
-<h1>Categories</h1>
+<section class="section-sm">
+  <div class="container-md categories">
+    <h1>Categories</h1>
 
-<button><%= link_to "New category", new_category_path%></button>
+    <button class="button button--secondary button--sm text-decoration-none"><%= link_to "New category", new_category_path%></button>
+    <!--<%= button_tag "New category", type: "button"%>-->
 
-<% @categories.each do |category| %>
-  <div>
-    <% if category.cover.attached? %>
+    <% @categories.each do |category| %>
       <div>
-        <%= image_tag category.cover%>
+        <% if category.cover.attached? %>
+          <div>
+            <%= image_tag category.cover%>
+          </div>
+        <%end%>
+        <h2><%= category.name %></h2>
+        <p><%= "#{category.photos_count} photos" %></p>
+        <p><%= category.description %></p>
+        <%= link_to "Show", category_path(category) %>
+        <%= link_to "Edit", edit_category_path(category) %>
+        <%= link_to "Destroy", category_path(category), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      } %>
       </div>
-    <%end%>
-    <h2><%= category.name %></h2>
-    <p><%= "#{category.photos_count} photos" %></p>
-    <p><%= category.description %></p>
-    <%= link_to "Show", category_path(category) %>
-    <%= link_to "Edit", edit_category_path(category) %>
-    <%= link_to "Destroy", category_path(category), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
+    <% end %>
   </div>
-<% end %>
+</section>
