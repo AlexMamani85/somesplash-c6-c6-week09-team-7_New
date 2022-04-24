@@ -35,6 +35,10 @@
   color: var(--white)
 }
 
+.text-stone {
+  color: var(--stone--900)
+}
+
 .pink-600 {
   color: var(--pink-600);
 }
@@ -45,6 +49,10 @@
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.m-0 {
+  margin : 0px 0px;
 }
 
 .my-0\.5 {
