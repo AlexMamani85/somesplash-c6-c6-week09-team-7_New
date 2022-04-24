@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
             redirect_to photo_path(@photo)
           end   
         else
-            render json: { error: critic.error.full_messages }, status: :unprocessable_entity
+            redirect_to category_path(@category)
         end
     end
 

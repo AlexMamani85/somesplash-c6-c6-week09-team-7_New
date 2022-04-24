@@ -24,7 +24,7 @@
             <div class="comment--card__footer">
               <p class="text-transform-capitalize"><%= time_ago_in_words(comment.created_at) %></p>
               <button class="comment--card__button-trash">
-                <%= link_to "Destroy", category_comment_path(@category, comment), data: {
+                <%= link_to category_comment_path(@category, comment), data: {
                             turbo_method: :delete,
                             turbo_confirm: "Are you sure?"
                           } do %>

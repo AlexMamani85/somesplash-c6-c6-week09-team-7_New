@@ -4,7 +4,9 @@
         <div class="search--block">
             <% if photo.image.attached? %>
                 <div>
-                <%= image_tag photo.image, class:"search--img"%>
+                <%= link_to photo_path(photo) do%>
+                  <%= image_tag photo.image, class:"search--img ctg-cover"%>
+                <% end %>
                 </div>
             <% end %>
             <div class="search--card">
@@ -16,7 +18,7 @@
                 <div class="search--card__buttons">
                   <button class="button round-btn">
                     <%= link_to edit_photo_path(photo) do %>
-                      <%= image_tag("pen.png") %>
+                      <%= image_tag("pen.png")%>
                     <% end %>
                   </button>
                   <button class="button round-btn">
