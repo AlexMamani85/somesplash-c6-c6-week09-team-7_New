@@ -1,41 +1,60 @@
-<%= form_with model: photo  do |form| %>
-    <div>
-        <%= form.label :title%>
-        <br>
-        <%= form.text_field :title, placeholder: "Big montain" %>
-        <% photo.errors.full_messages_for(:title).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
+
+<section class="section-sm">
+  <div class="container-md">
+  
+    <%= form_with model: photo, class: "gap-4 flex flex-column"  do |form| %>
+    <div class="">
+        <div>
+            <%= form.label :title, class:"overline"%>
+            <br>
+            <%= form.text_field :title, class:"input b-16", placeholder: "Big montain" %>
+
+            <%# Something went wrong: %>
+            <div class="error-400 head-xs">Something went wrong:
+                <div class="gray-500 text-sm b-16">
+                    <% photo.errors.full_messages_for(:title).each do |message| %>
+                        <div><%= message %></div>
+                    <% end %>
+                    <% photo.errors.full_messages_for(:description).each do |message| %>
+                        <div><%= message %></div>
+                    <% end %>
+                </div>
+            </div>
+            <%# FIN:Something went wrong: %>
+        </div>
+
+        <div>
+            <%= form.label :description, class:"overline"%>
+            <br>
+            <%= form.text_area :description, class:"input b-16", placeholder: "Photo taken on..." %>
+
+        </div>
+
+        <div>
+            <%= form.label :category_id, class:"overline" %>
+            <%= form.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id }, class:"select b-16" %>
+            <% photo.errors.full_messages_for(:category_id). each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+        
+        <div>
+            <%= form.label :image, class:"overline text-decoration-none" %>
+            <br>
+            <%= form.file_field :image, class:"button button--lg btn-width100 overline b-16 text-decoration-none", accept: "image/png, image/jpeg"%>
+        </div>
+
+
+
+        <div>
+            <%= form.submit class:"button button--secondary btn-width100 overline b-16"  %>
+        </div>
+        <div>
+            <button class="button button--default btn-width100 overline b-16 "> <%= link_to 'Back', url_for(:back),class: "gray-700 text-decoration-none" %> </button>
+        </div>
+
     </div>
+    <% end %>
 
-    <div>
-        <%= form.label :description %>
-        <br>
-        <%= form.text_area :description, placeholder: "Photo taken on..." %>
-        <% photo.errors.full_messages_for(:description).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :image %>
-        <br>
-        <%= form.file_field :image, accept: "image/png, image/jpeg"%>
-    </div>
-
-    <div>
-        <%= form.label :category_id %>
-        <%= form.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id }%>
-        <% photo.errors.full_messages_for(:category_id). each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    <div>
-
-  <button> <%= link_to 'Back', url_for(:back) %> </button>
-
-
-<% end %>
+  </div>
+</section>
