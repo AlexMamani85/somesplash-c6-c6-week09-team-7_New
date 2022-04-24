@@ -1,3 +1,5 @@
 @import url("./global.css");
 
 @import url("./components/categories.css");
+@import url("./components/new_photo.css");
+@import url("./components/comments.css");

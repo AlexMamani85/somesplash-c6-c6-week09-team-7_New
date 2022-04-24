@@ -1,25 +1,38 @@
-<%= form_with url: photo_comments_path(@photo), model: comment do |form| %>
-    <div>
-        <%= form.text_area :body, placeholder: "Some respectful comment here."%>
-        <%= comment.errors.full_messages_for(:body).each do |message| %>
-            <div><%= message %></div>
-        <%end%>
-    </div>
+<div class="my-1">
+    <%= form_with url: photo_comments_path(@photo), model: comment do |form| %>
+        <div class="mb-0.5">
+            <%= form.text_area :body, placeholder: "Some respectful comment here.", class: "input"%>
+            <% comment.errors.full_messages_for(:body).each do |message| %>
+                <div><%= message %></div>
+            <%end%>
+        </div>
 
-    <div>
-      <%= form.submit %>
-    </div>
-<% end %>
+        <div>
+          <%= form.submit class: "button button--secondary overline btn-width100" %>
+        </div>
+    <% end %>
+</div>
 
-<h3>Comments</h3>
-<% @comments.each do |comment| %>
-    <div>
-        <hr>
-        <span><%= comment.body%></span>
-        <span><%= comment.created_at%></span>
-        <%= link_to "Destroy", photo_comment_path(@photo, comment), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-        }%>
+<div>
+    <h3 class="head-xs mb-1.5">Comments</h3>
+    <div class="mx-0.5">
+        <% @comments.each do |comment| %>
+            <div class="comment--card">
+                <div class="comment--card__header">
+                    <p class="text-md"><%= comment.body%></p>
+                </div>
+                <div class="comment--card__footer">
+                    <p class="text-transform-capitalize"><%= time_ago_in_words(comment.created_at) %></p>
+                    <button class="comment--card__button-trash">
+                        <%= link_to photo_comment_path(@photo, comment), data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                        } do %>
+                            <%= image_tag("trash.png")%>
+                        <% end %>
+                    </button>
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>
