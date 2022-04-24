@@ -2,7 +2,7 @@
     <div>
         <%= form.text_area :body, placeholder: "Some respectful comment here."%>
         <%= comment.errors.full_messages_for(:body).each do |message| %>
-            <div><%= message%></div>
+            <div><%= message %></div>
         <%end%>
     </div>
 
