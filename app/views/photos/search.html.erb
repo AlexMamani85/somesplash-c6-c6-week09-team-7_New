@@ -1,16 +1,36 @@
-<% @photos.each do |photo| %>
-    <div>
-        <% if photo.image.attached? %>
-            <div>
-            <%= image_tag photo.image %>
+<section class="section-sm">
+  <div class="container-sm">
+    <% @photos.each do |photo| %>
+        <div class="search--block">
+            <% if photo.image.attached? %>
+                <div>
+                <%= image_tag photo.image, class:"search--img"%>
+                </div>
+            <% end %>
+            <div class="search--card">
+              <h2 class="head-xs"><%= photo.title %>:</h2>
+              <div class="search--card__footer">
+                <div class="mb-0.25">
+                  <p class="text-sm regular gray"><%= photo.comments_count %> comments</p>
+                </div>
+                <div class="search--card__buttons">
+                  <button class="button round-btn">
+                    <%= link_to edit_photo_path(photo) do %>
+                      <%= image_tag("pen.png") %>
+                    <% end %>
+                  </button>
+                  <button class="button round-btn">
+                  <%= link_to photo_path(photo), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                      } do %>
+                      <%= image_tag("trash.png") %>
+                    <% end %>
+                  </button>
+                </div>
+              </div>
             </div>
-        <% end %>
-        <span><%= photo.title %>:</span>
-        <span><%= photo.description %></span>
-        <span><%= link_to "Edit", edit_photo_path(photo) %></span>
-        <span><%= link_to "Destroy", photo_path(photo), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-        } %></span>
-    </div>
-<% end %>
+        </div>
+    <% end %>
+  </div>
+</section>  

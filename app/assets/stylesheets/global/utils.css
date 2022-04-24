@@ -82,3 +82,10 @@
 .center {
   text-align: center;
 }
+.mb-0\.25 {
+  margin-bottom: 0.25rem;
+}
+
+.gray {
+  color: #7A7A7A ;
+}
