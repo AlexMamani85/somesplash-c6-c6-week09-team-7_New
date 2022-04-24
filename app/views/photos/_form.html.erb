@@ -34,13 +34,11 @@
             <%= form.file_field :image, class:"button button--lg btn-width100 overline text-decoration-none", accept: "image/png, image/jpeg"%>
         </div>
 
-        <div class="b-16">
+        <div>
             <%= form.submit class:"button button--secondary btn-width100 overline"  %>
         </div>
-
-        <div class="b-16">
-            <button class="button button--default btn-width100 overline"> <%= link_to 'Back', url_for(:back),class: "gray-700 text-decoration-none" %> </button>
-        </div>
-
     </div>
+        <div class="b-16">
+            <button class="button button--default btn-width100 overline"> <%= link_to 'Back', categories_path, class: "gray-700 text-decoration-none" %> </button>
+        </div>
     <% end %>

@@ -113,3 +113,8 @@
 .gray {
   color: #7A7A7A ;
 }
+
+.expand {
+   height: 67vh;
+   display:flex;
+}
