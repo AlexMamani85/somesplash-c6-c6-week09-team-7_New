@@ -1,8 +1,11 @@
-.categories {
 
-}
-
-.categories h1 {
-    color: var(--gray-500);
+.ctg-title {
+    font-family: var(--font-secondary);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
     margin-bottom: 16px;
-}
+    color: #17171C;
+    }
