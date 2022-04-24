@@ -1,32 +1,43 @@
 <section class="section-md">
     <div class="container-lg">
-        <h1><%= @category.name %></h1>
-        <p><%= @category.description %></p>
+        <h1 class="ctg-title"><%= @category.name %></h1>
+        <p class="ctg-description"><%= @category.description %></p>
 
         <!-- Change new_employee_path after creating employee routes -->
-        <button><%= link_to "New Photo", new_photo_path(category_id: @category.id) %></button>
+        <button class="button button--secondary button--sm ctg-bot-margin"><%= link_to "NEW PHOTO", new_photo_path(category_id: @category.id), class: "ctg-button" %></button>
         <% @photos.each do |photo| %>
-            <div>
+            <div class="ctg-card gray-card">
                 <% if photo.image.attached? %>
                     <div>
                         <%= link_to photo_path(photo) do%>
-                            <%= image_tag photo.image%>
+                            <%= image_tag photo.image, class: "ctg-cover"%>
                         <% end %>
                     </div>
                 <% end %>
-                <h3><%= photo.title %></h3>
-                <span><%= photo.description %></span>
-                <br>
-                <span><%= "#{photo.comments_count} Comments" %></span>
-                <br>
-                <button><%= link_to "Edit", edit_photo_path(photo, category_id: @category.id) %></button>
-                <button><%= link_to "Destroy", photo_path(photo), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                } %></button>
+                <div class="ctg-card-body">
+                    <h3 class="card-title"><%= photo.title %></h3>
+                <div class="card-wrapper">
+                    <p class="card-counter"><%= "#{photo.comments_count} Comments" %></p>
+                        <div class="imgs-card-footer">
+                            <button class="button round-btn">
+                                <%= link_to edit_photo_path(photo, category_id: @category.id) do%>
+                                    <%= image_tag("pen.png")%>
+                                <% end %>
+                            </button>
+                             <button class="button round-btn">
+                                <%= link_to photo_path(photo), data: {
+                                                turbo_method: :delete,
+                                                turbo_confirm: "Are you sure?" } do %>
+                                     <%= image_tag("trash.png")%>
+                                 <% end %>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         <% end %>
-
+                    
         <%= render "comments", comment: @comment_new %>
+
     </div>
 </section>
