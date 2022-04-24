@@ -1,14 +1,14 @@
-<section class>
-    <div>
-        <h1> <%= @photo.title %> </h1>
-        <span> <%= @photo.description %> </span>
-        <span> <%= @photo.updated_at %> </span>
+<section class="section-sm">
+    <div class="container-sm">
+        <h1 class="img-title"> <%= @photo.title %> </h1>
+        <p class="img-description"> <%= @photo.description %> </p>
+        <p class="img-counter"> <%= "Updated at #{@photo.updated_at.strftime("%B %e, %Y")}" %> </p>
         <% if @photo.image.attached? %>
             <div>
                 <%= image_tag @photo.image%>
             </div>
         <% end %>
+    <%= render "comments", comment: @comment_new %>
     </div>
 
-    <%= render "comments", comment: @comment_new %>
 </section>

@@ -10,6 +10,16 @@
     color: #17171C;
 }
 
+.img-title {
+    font-family: var(--font-secondary);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #17171C;
+}
+
 .ctg-button {
     text-decoration: none;
     color: white;
@@ -36,6 +46,10 @@
     box-shadow: 0px 10px 15px -3px #0000001A;
 }
 
+.gray-card {
+    background: #F2F2F2;
+}
+
 .ctg-cover {
     border-radius: 8px 8px 0px 0px;
 }
@@ -54,6 +68,19 @@
     color: #303036;
 }
 
+.card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+.imgs-card-footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-direction: row-reverse;
+}
 .card-counter {
     font-size: 14px;
     font-weight: 400;
@@ -61,11 +88,43 @@
     letter-spacing: 0em;
     font-family: Inter;
     text-align: left;
+    color: #7A7A7A
+}
+
+.img-counter {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    font-family: Inter;
+    text-align: left;
+    margin-bottom: 16px;
     color: #7A7A7A;
 
 }
 
 .card-description {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #303036;
+}
+
+.ctg-description {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #303036;
+    margin-bottom: 16px;
+}
+
+.ctg-description {
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
