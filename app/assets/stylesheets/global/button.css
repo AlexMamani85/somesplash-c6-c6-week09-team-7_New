@@ -106,7 +106,32 @@
 .button--secondary:disabled {
   opacity: 0.6;
   cursor: default;
-  background-color: var(--stone-500);
+  background-color: var(--stone-700);
+}
+
+
+.button--create {
+  background-color: var(--stone-700);
+  color: var(--white);
+}
+
+.button--create:hover {
+  background-color: var(--stone-800);
+}
+
+.button--create:active {
+  background-color: var(--stone-900);
+}
+
+.button--create:focus {
+  outline: 2px solid var(--stone-900);
+  outline-offset: 2px;
+}
+
+.button--create:disabled {
+  opacity: 0.6;
+  cursor: default;
+  background-color: var(--stone-700);
 }
 
 /* Button secondary - END */
