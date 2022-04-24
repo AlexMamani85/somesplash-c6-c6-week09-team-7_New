@@ -1,31 +1,28 @@
 <%= form_with model: category do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name, placeholder: "Technology" %>
-    <% category.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  <% unless category.errors.full_messages.empty? %>
+    <div class="category--form__section">
+      <h2 class="head-xs category--form__header-error">Something went wrong</h2>
+      <ul class="m-0">
+        <%category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
+  <div class="category--form__section">
+    <%= form.label :name,  class: "category--form__label" %>
+    <%= form.text_field :name, placeholder: "Technology", class: "category--form__input" %>
   </div>
-
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, placeholder: "Exploring our complicated relationship with technology..." %>
-    <% category.errors.full_messages_for(:description).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  <div class="category--form__section">
+    <%= form.label :description, class: "category--form__label" %>
+    <%= form.text_area :description, placeholder: "Exploring our complicated relationship with technology...", class: "category--form__textarea" %>
   </div>
-
-  <div>
-    <%= form.label :cover %><br>
+  <div class="category--form__section">
+    <%= form.label :cover, class: "category--form__label" %>
     <%= form.file_field :cover, accept: "image/png, image/jpeg" %>
-    <% category.errors.full_messages_for(:cover).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="category--form__section">
+    <%= form.submit class: "button--create category--form__button" %>
   </div>
-  
-  <button> <%= link_to 'Back', url_for(:back) %> </button>
+  <button class="button--default category--form__button"> <%= link_to 'Back', url_for(:back), class: "text-decoration-none text-stone" %> </button>
 <% end %>
